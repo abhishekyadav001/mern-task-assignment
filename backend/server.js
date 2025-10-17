@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
-app.use("/",()=>{
+app.get("/",(req,res)=>{
   res.send("Hello World");
 })
 app.use('/api/auth', authRoutes);
