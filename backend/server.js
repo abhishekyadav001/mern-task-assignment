@@ -10,8 +10,10 @@ const projectRoutes = require('./routes/project.routes');
 const taskRoutes = require('./routes/task.routes');
 
 const app = express();
-
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5173',process.env.FRONTEND_URL], // Add your frontend URLs
+  credentials: true
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -22,9 +24,7 @@ app.get('/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/projects/:projectId/tasks', taskRoutes);
-app.get("/",(req,res)=>{
-  res.send("Hello World");
-})
+
 const PORT = process.env.PORT || 5000;
 
 async function start() {
