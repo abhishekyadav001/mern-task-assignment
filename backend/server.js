@@ -18,13 +18,13 @@ app.use(morgan('dev'));
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
-app.get("/",(req,res)=>{
-  res.send("Hello World");
-})
+
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/projects/:projectId/tasks', taskRoutes);
-
+app.get("/",(req,res)=>{
+  res.send("Hello World");
+})
 const PORT = process.env.PORT || 5000;
 
 async function start() {
