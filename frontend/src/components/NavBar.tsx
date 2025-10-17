@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Avatar, Chip, Fade, Slide } from '@mui/material'
+import { AppBar, Box, Button, Container, Divider, IconButton, Menu, MenuItem, Toolbar, Typography, Avatar, Chip, Slide } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AssignmentIcon from '@mui/icons-material/Assignment'
