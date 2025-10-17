@@ -18,7 +18,9 @@ app.use(morgan('dev'));
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
-
+app.use("/",()=>{
+  res.send("Hello World");
+})
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/projects/:projectId/tasks', taskRoutes);
