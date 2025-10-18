@@ -11,8 +11,9 @@ const taskRoutes = require('./routes/task.routes');
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173',process.env.FRONTEND_URL], // Add your frontend URLs
-  credentials: true
+  // origin: ['http://localhost:3000', 'http://localhost:5173',process.env.FRONTEND_URL], // Add your frontend URLs
+  // credentials: true
+  *
 }));
 app.use(express.json());
 app.use(morgan('dev'));
