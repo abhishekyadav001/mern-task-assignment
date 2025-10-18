@@ -19,7 +19,7 @@ const allowedOrigins = [
   "https://mern-task-assignment.vercel.app",
   "https://mern-task-assignment-git-main-abhishekyadav001.vercel.app",
   process.env.FRONTEND_URL,
-].filter(Boolean);
+].filter(Boolean);  
 
 const corsOptions = {
   origin: function (origin, callback) {
