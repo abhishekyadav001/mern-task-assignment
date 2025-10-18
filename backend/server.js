@@ -12,43 +12,39 @@ const taskRoutes = require('./routes/task.routes');
 const app = express();
 
 // CORS configuration
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "https://mern-task-assignment.vercel.app",
+  "https://mern-task-assignment-git-main-abhishekyadav001.vercel.app",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
+    // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
-    
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'http://localhost:5173',
-      'https://mern-task-assignment.vercel.app',
-      'https://mern-task-assignment-git-main-abhishekyadav001.vercel.app',
-      process.env.FRONTEND_URL
-    ].filter(Boolean);
-    
+
     if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
+      callback(null, true);
+    } else {
+      console.warn("❌ CORS blocked request from:", origin);
+      callback(new Error("Not allowed by CORS"));
     }
-    
-    // For development, allow all origins
-    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV !== 'production') {
-      return callback(null, true);
-    }
-    
-    return callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: [
-    'Content-Type', 
-    'Authorization', 
-    'x-auth-token', 
-    'Origin', 
-    'Accept',
-    'X-Requested-With'
+    "Content-Type",
+    "Authorization",
+    "x-auth-token",
+    "Origin",
+    "Accept",
+    "X-Requested-With",
   ],
-  exposedHeaders: ['Authorization', 'x-auth-token'],
-  preflightContinue: false,
-  optionsSuccessStatus: 200
+  exposedHeaders: ["Authorization", "x-auth-token"],
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
